@@ -1,10 +1,11 @@
 import axios from "axios";
+import { API_URL } from "../config";
 
-const API_URL = "http://localhost:5000/api/analytics";
+const ANALYTICS_URL = `${API_URL}/analytics`;
 
 export const getTopSkills = async () => {
     const response = await axios.get(
-        `${API_URL}/skills`
+        `${ANALYTICS_URL}/skills`
     );
 
     return response.data;
@@ -12,7 +13,7 @@ export const getTopSkills = async () => {
 
 export const getLocationStats = async () => {
     const response = await axios.get(
-        `${API_URL}/locations`
+        `${ANALYTICS_URL}/locations`
     );
 
     return response.data;
@@ -20,7 +21,7 @@ export const getLocationStats = async () => {
 
 export const getExperienceStats = async () => {
     const response = await axios.get(
-        `${API_URL}/experience`
+        `${ANALYTICS_URL}/experience`
     );
 
     return response.data;

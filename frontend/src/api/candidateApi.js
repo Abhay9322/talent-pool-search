@@ -1,7 +1,8 @@
 import axios from "axios";
+import { API_URL } from "../config";
 
 const API = axios.create({
-    baseURL: "http://localhost:5000/api",
+    baseURL: API_URL,
 });
 
 export const getCandidates = async (filters = {}) => {
@@ -21,26 +22,9 @@ export const getCandidates = async (filters = {}) => {
     }
 };
 
-// export const getCandidateById = async (id) => {
-//     try {
-//         const response = await API.get(`/candidates/${id}`);
-
-//         return response.data;
-//     } catch (error) {
-//         console.error(error);
-
-//         throw (
-//             error.response?.data?.message ||
-//             "Failed to fetch candidate"
-//         );
-//     }
-// };
-
-// import axios from "axios";
-
 export const getCandidateById = async (id) => {
     const response = await axios.get(
-        `http://localhost:5000/api/candidates/${id}`
+        `${API_URL}/candidates/${id}`
     );
 
     return response.data.data;

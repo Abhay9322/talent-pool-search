@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import CandidateFilters from "../components/CandidateFilters";
 import CandidateCard from "../components/CandidateCard";
 import EmptyState from "../components/EmptyState";
+import { API_URL } from "../api/config";
 
 function Dashboard() {
     const navigate = useNavigate();
@@ -23,9 +24,7 @@ function Dashboard() {
 
     const fetchCandidates = async () => {
         try {
-            const { data } = await axios.get(
-                "http://localhost:5000/api/candidates"
-            );
+            const { data } = await axios.get(`${API_URL}/candidates`);
 
             console.log("API RESPONSE:", data);
             console.log("CANDIDATES:", data.data);
@@ -58,12 +57,9 @@ function Dashboard() {
 
             console.log("param is", params);
 
-            const { data } = await axios.get(
-                "http://localhost:5000/api/candidates",
-                {
-                    params,
-                }
-            );
+            const { data } = await axios.get(`${API_URL}/candidates`, {
+                params,
+            });
 
             console.log("data is", data);
 
